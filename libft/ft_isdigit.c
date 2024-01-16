@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:17:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:56:40 by mariojim         ###   ########.fr       */
+/*   Created: 2024/01/15 00:47:10 by mariojim          #+#    #+#             */
+/*   Updated: 2024/01/15 00:49:05 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int		ft_isdigit(int c)
 {
-	int		len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	if(c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

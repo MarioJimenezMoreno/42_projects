@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:17:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:56:40 by mariojim         ###   ########.fr       */
+/*   Created: 2024/01/15 00:46:14 by mariojim          #+#    #+#             */
+/*   Updated: 2024/01/15 00:48:48 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int		ft_isalpha(int c)
 {
-	int		len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	if (c >= 'a' && c <= 'z')
+		return (2);
+	return (0);
 }

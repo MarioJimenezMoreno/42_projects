@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:17:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:56:40 by mariojim         ###   ########.fr       */
+/*   Created: 2023/11/30 18:42:53 by mariojim          #+#    #+#             */
+/*   Updated: 2024/01/15 01:00:24 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+char	*ft_strlowcase(char *str)
 {
-	int		len;
+	int		i;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = str[i] + 32;
+		i++;
+	}
+	return (str);
 }

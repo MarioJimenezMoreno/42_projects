@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:17:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:56:40 by mariojim         ###   ########.fr       */
+/*   Created: 2024/01/15 01:15:43 by mariojim          #+#    #+#             */
+/*   Updated: 2024/01/15 02:02:35 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+char	*ft_strrchr(const char *s, int c)
 {
-	int		len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	char	*ptr;
+	int		i;
+	
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
+			*ptr = s[i];
+		}	
+		i++;
+	}
+	if (c == '\0')
+	{
+		*ptr = s[i];
+		return (ptr);
+	}
+	return (NULL);	
 }

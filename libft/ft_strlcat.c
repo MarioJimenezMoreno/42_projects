@@ -6,11 +6,9 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 23:18:04 by mariojim          #+#    #+#             */
-/*   Updated: 2023/12/06 14:33:59 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/15 00:58:21 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {

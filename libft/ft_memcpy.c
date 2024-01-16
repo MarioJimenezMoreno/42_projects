@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:17:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:56:40 by mariojim         ###   ########.fr       */
+/*   Created: 2024/01/15 00:50:52 by mariojim          #+#    #+#             */
+/*   Updated: 2024/01/15 01:03:14 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		len;
+	int		i;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	i = 0;
+	while (i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
 }

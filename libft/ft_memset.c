@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:17:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:56:40 by mariojim         ###   ########.fr       */
+/*   Created: 2024/01/15 00:50:12 by mariojim          #+#    #+#             */
+/*   Updated: 2024/01/15 00:50:18 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int		len;
+	int		i;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	i = 0;
+	while (i < n)
+	{
+		s[i] = c;
+		i++;	
+	}
 }

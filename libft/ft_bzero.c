@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:17:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:56:40 by mariojim         ###   ########.fr       */
+/*   Created: 2024/01/15 00:49:47 by mariojim          #+#    #+#             */
+/*   Updated: 2024/01/15 00:50:33 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	int		len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	int		i;
+	
+	i = 0;
+	while (i < n)
+	{
+		s[i] = 0;
+		i++;
+	}
 }

@@ -6,9 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 01:15:43 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 02:02:35 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:36:24 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

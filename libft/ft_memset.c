@@ -6,9 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 00:50:12 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:50:18 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:31:41 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {

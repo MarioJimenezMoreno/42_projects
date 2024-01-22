@@ -6,9 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 00:49:47 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:50:33 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:31:53 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

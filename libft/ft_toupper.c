@@ -6,20 +6,22 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:36:55 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 01:00:36 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:35:59 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strupcase(char *str)
+#include "libft.h"
+
+int		ft_toupper(int c)
 {
 	int		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (c[i] != '\0')
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] = str[i] - 32;
+		if (c[i] >= 'a' && c[i] <= 'z')
+			c[i] = c[i] - 32;
 		i++;
 	}
-	return (str);
+	return (c);
 }

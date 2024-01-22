@@ -6,9 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:41:53 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 17:19:01 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:37:45 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int ft_memcmp(const void *s1, const void *s2, size_t n)
 {

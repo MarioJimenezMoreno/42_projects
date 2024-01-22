@@ -6,9 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 00:46:14 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 00:48:48 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:29:41 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_isalpha(int c)
 {

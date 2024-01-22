@@ -6,20 +6,22 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:42:53 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/15 01:00:24 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:35:45 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strlowcase(char *str)
+#include "libft.h"
+
+int		ft_tolower(int c)
 {
 	int		i;
 
 	i = 0;
-	while (str[i])
+	while (c[i])
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] = str[i] + 32;
+		if (c[i] >= 'A' && c[i] <= 'Z')
+			c[i] = c[i] + 32;
 		i++;
 	}
-	return (str);
+	return (c);
 }

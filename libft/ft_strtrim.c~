@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:45:00 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/22 18:29:21 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:00:19 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len = ft_strlen(s1);
 	i = 0;
 	while (s1[i])
-	{
-		j = 0;
+	{	j = 0;
 		while (set[j])
 		{
 			if (s1[i] == set[j])

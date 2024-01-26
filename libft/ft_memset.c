@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 00:50:12 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/16 18:31:41 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:47:29 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	int		i;
+	size_t		i;
 
 	i = 0;
 	while (i < n)
 	{
-		s[i] = c;
-		i++;	
+		((char *)s)[i] =(char)c;
+		i++;
 	}
+	return (s);
 }

@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 23:18:04 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/16 18:34:00 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:21:47 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
+	size_t	d_len;
+	size_t	s_len;
 
-	i = 0;
+	d_len = ft_strlen(dst);
+	s_len = ft_strlen(src);
+	i = d_len;
 	j = 0;
-	while (dst[i] != '\0' && size > 0)
+	if (d_len + 1 > size)
+		return (size + s_len);
+	if (d_len + 1 < size)
 	{
-		i++;
-		size--;
+		while (src[j] && i < size - 1)
+		{
+			dst[i] = src[j];
+			j++;
+			i++;
+		}
 	}
-	while (src[j] != '\0' && size > 1)
-	{
-		dst[i] = src[j];
-		j++;
-		i++;
-	}
-	while (size > 0)
-	{
-		dst[i] = '\0';
-		size--;
-	}
-	return (i);
+	dst[i] = '\0';
+	return (s_len + d_len);
 }

@@ -6,22 +6,15 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:42:53 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/16 18:35:45 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/29 23:43:42 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	int		i;
-
-	i = 0;
-	while (c[i])
-	{
-		if (c[i] >= 'A' && c[i] <= 'Z')
-			c[i] = c[i] + 32;
-		i++;
-	}
+	if (c >= 'A' && c <= 'Z')
+		c = c + 32;
 	return (c);
 }

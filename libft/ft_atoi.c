@@ -6,33 +6,35 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:08:22 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/16 18:39:05 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/01 00:45:33 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(char *nptr)
+int	ft_atoi(char *nptr)
 {
-	int		num;
-	int		sign;
-	int		i;
+	int	num;
+	int	sign;
+	int	i;
 
 	i = 0;
 	num = 0;
-	sign = 0;
-	while (nptr[i] == ' ')
+	sign = 1;
+	while (nptr[i] == '\t' || nptr[i] == '\v' || nptr[i] == '\f'
+		|| nptr[i] == '\r' || nptr[i] == '\n' || nptr[i] == ' ')
 		i++;
-	while (nptr[i] == '+' || nptr[i] == '-')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
-			sign++;
+			sign = -1;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (nptr[i])
 	{
-		num = num * 10 + (nptr[i] - '0');
+		if (nptr[i] >= '0' && nptr[i] <= '9')
+			num = num * 10 + (nptr[i] - '0');
+		else
+			break ;
 		i++;
 	}
-	if (sign % 2 != 0)
-		return (-num);
-	return (num);
+	return (sign * num);
 }

@@ -6,13 +6,13 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 00:48:23 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/16 18:30:04 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/29 22:52:32 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);

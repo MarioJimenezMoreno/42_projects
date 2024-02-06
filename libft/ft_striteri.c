@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:17:22 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/24 20:23:35 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:53:40 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		str = f(i,str);
-		str++;
+		f(i, &s[i]);
 		i++;
 	}
 }

@@ -6,58 +6,83 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:45:00 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/23 18:10:26 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/06 09:17:40 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void trim_end(char const *s1, char const *set, int i, int j)
+static size_t	trim_end(char const *s1, char const *set)
 {
-	while (s1[len - k - 1])
+	int	len;
+	int	x;
+	int	j;
+
+	j = 0;
+	x = 0;
+	len = ft_strlen(s1) - 1;
+	if (ft_strlen(set) == 0)
+		return (j);
+	while (len - j > 0)
 	{
-		if (s1[len - k - 1] != set[j])
+		if (s1[len - j] != set[x])
 		{
-			j++;
-			if (!set[j])
-				break;
-			continue;
+			x++;
+			if (!set[x])
+				break ;
+			continue ;
 		}
-		j = 0;
-		k++;
+		x = 0;
+		j++;
 	}
+	return (j);
 }
 
-static void	trim_start(char const *s1, char const *set, int i, int j)
+static size_t	trim_start(char const *s1, char const *set)
 {
+	int	x;
+	int	i;
+
+	i = 0;
+	x = 0;
+	if (ft_strlen(set) == 0)
+		return (i);
 	while (s1[i])
 	{
-		if (s1[i] != set[j])
+		if (s1[i] != set[x])
 		{
-			j++;
-			if (!set[j])
-				break;
-			continue;
+			x++;
+			if (!set[x])
+				break ;
+			continue ;
 		}
-		j = 0;
+		x = 0;
 		i++;
 	}
+	return (i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trim;
-	int		len;
-	int		i;
-	int		j;
-	int		k;
+	size_t	len;
+	size_t	i;
+	size_t	j;
 
-	len = ft_strlen(s1);
-	i = 0;
-	trim_start(s1, set, &i, &j);
-	trim_end(s1, set, &k, &j);
-	if (len - i - 1 == 0)
-		return (trim);
-	
+	i = trim_start(s1, set);
+	j = trim_end(s1, set);
+	len = ft_strlen(s1) - i - j;
+	if (ft_strlen(s1) == i)
+		return (ft_strdup(""));
+	trim = (char *)malloc(sizeof(char) * (len + 1));
+	if (!trim)
+		return (NULL);
+	j = 0;
+	while (j < len)
+	{
+		trim[j] = s1[i + j];
+		j++;
+	}
+	trim[j] = '\0';
 	return (trim);
 }

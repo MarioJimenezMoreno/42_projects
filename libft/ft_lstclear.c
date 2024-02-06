@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 20:44:36 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/01 02:46:36 by mariojim         ###   ########.fr       */
+/*   Created: 2024/02/04 15:30:43 by mariojim          #+#    #+#             */
+/*   Updated: 2024/02/06 07:34:59 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char	num;
+	t_list	*nuxt;
 
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	if (n <= 2147483647 && n >= -2147483647)
+	if (!lst || !del)
+		return ;
+	while (*lst)
 	{
-		if (n < 0)
-		{
-			write(fd, "-", 1);
-			n *= -1;
-		}
-		if (n / 10)
-			ft_putnbr_fd(n / 10, fd);
-		num = (n % 10) + '0';
-		write(fd, &num, 1);
+		nuxt = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = nuxt;
 	}
 }

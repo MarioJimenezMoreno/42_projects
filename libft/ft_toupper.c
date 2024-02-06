@@ -6,22 +6,15 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:36:55 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/16 18:35:59 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/29 23:43:22 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_toupper(int c)
+int	ft_toupper(int c)
 {
-	int		i;
-
-	i = 0;
-	while (c[i] != '\0')
-	{
-		if (c[i] >= 'a' && c[i] <= 'z')
-			c[i] = c[i] - 32;
-		i++;
-	}
+	if (c >= 'a' && c <= 'z')
+		c = c - 32;
 	return (c);
 }

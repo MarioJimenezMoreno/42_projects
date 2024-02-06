@@ -6,15 +6,15 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:41:57 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/24 20:43:03 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/01/29 23:05:38 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])

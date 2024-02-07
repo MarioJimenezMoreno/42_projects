@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:58:35 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/06 10:34:38 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:27:39 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,54 @@ static int	splits_calc(char const *s, char c, char ***str)
 			splits++;
 		i++;
 	}
-	if (splits == 0)
-		return (0);
-	*str = (char **)malloc(sizeof(char *) * splits);
+	*str = (char **)malloc(sizeof(char *) * (splits + 1));
 	return (splits);
 }
 
-static void	splits_len(char const *s, char c, char ***str)
+static int	assign_str(char **str, const char *s, int len, int i)
+{
+	int	x;
+
+	x = 0;
+	*str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!*str)
+		return (0);
+	while (len--)
+	{
+		(*str)[x] = s[i - len - 1];
+		x++;
+	}
+	(*str)[x] = '\0';
+	return (1);
+}
+
+static int	splits_len(char const *s, char c, char **str)
 {
 	int	i;
 	int	len;
 	int	j;
 
-	j = 0;
 	i = 0;
-	len = 0;
-	while (s[i] == c)
-		i++;
+	j = 0;
 	while (s[i])
 	{
-		if (s[i] != c)
-			len++;
-		if (s[i] != c && (s[i + 1] == c || !s[i + 1]))
+		len = 0;
+		while (s[i] && s[i] != c)
 		{
-			(*str)[j] = (char *)malloc(sizeof(char) * (len + 1));
-			j++;
-			len = 0;
+			len++;
+			i++;
 		}
+		if (len > 0)
+		{
+			if (!assign_str(&str[j], s, len, i))
+				return (0);
+			j++;
+		}
+		if (!s[i])
+			break ;
 		i++;
 	}
+	return (1);
 }
 
 static void	flying_free(char ***str)
@@ -61,39 +80,12 @@ static void	flying_free(char ***str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while ((*str)[i])
 	{
-		free(str[i]);
+		free((*str)[i]);
 		i++;
 	}
-	free(str);
-}
-
-static void	fill_splits(int splits, char **str, const char *s, char c)
-{
-	int	i;
-	int	j;
-	int	x;
-
-	i = 0;
-	j = 0;
-	x = 0;
-	while (splits > 0)
-	{
-		j = 0;
-		while (s[x] == c)
-			x++;
-		while (s[x] && s[x] != c)
-		{
-			str[i][j] = s[x];
-			j++;
-			x++;
-		}
-		str[i][j] = '\0';
-		x++;
-		i++;
-		splits--;
-	}
+	free(*str);
 }
 
 char	**ft_split(char const *s, char c)
@@ -103,37 +95,20 @@ char	**ft_split(char const *s, char c)
 	int		splits;
 
 	i = 0;
-	if (!s[0] || splits_calc(s, c, &str) == 0)
-	{
-		str = (char **)malloc(sizeof(char *) * 1);
-		str[0] = NULL;
-		return (str);
-	}
+	if (!s)
+		return (NULL);
 	splits = splits_calc(s, c, &str);
 	if (!str)
 		return (NULL);
-	splits_len(s, c, &str);
-	while (str[i])
+	if (splits)
 	{
-		if (!str[i])
+		if (!splits_len(s, c, str))
 		{
 			flying_free(&str);
 			return (NULL);
 		}
 		i++;
 	}
-	fill_splits(splits, str, s, c);
+	str[splits] = NULL;
 	return (str);
 }
-/*int main()
-{
-	int i;
-	char **hola = ft_split("0 0 0 3 2", ' ');
-	
-	i = 0;
-	while (hola[i])
-	{
-		printf("%s - ",hola[i]);
-		i++;
-	}
-}*/

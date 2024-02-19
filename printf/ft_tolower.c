@@ -6,11 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:42:53 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/29 23:43:42 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:56:36 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 int	ft_tolower(int c)
 {

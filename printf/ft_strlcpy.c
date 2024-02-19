@@ -6,11 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 00:57:06 by mariojim          #+#    #+#             */
-/*   Updated: 2024/01/30 18:02:49 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:54:07 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {

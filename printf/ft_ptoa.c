@@ -6,37 +6,21 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 23:58:34 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/14 18:06:48 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:26:33 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
-#include "libft.h"
+
+#include "libftprintf.h"
 
 char *ft_ptoa(void *ptr)
 {
 	char	*str;
 	int		i;
 
+	i = 0;
 	str = (char *)malloc(sizeof(char) * ((sizeof(void *) * 2) + 3));
 	if (!str)
 		return (NULL);
-	str[0] = '0';
-	str[1] = 'x';
-	i = 2;
-	while (i < (sizeof(void *) * 2))
-	{
-		int shift = ((sizeof(void *) * 2) - 1 - (i - 2)) * 4;
-	}
-	str[i] = '\0';
+	str  = ft_strjoin("0x", ft_ltohex((unsigned long)ptr));
 	return(str);
-}
-int main()
-{
-	char *ptr;
-	char num = '5';
-	
-	ptr = &num;
-	printf("%p\n",ptr);
-	printf("%s\n", ft_ptoa(ptr));
 }

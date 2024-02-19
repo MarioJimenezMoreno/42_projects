@@ -6,14 +6,13 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/14 19:57:12 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:21:49 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <libft.h>
+#include "libftprintf.h"
 
-static void print_and_free(char *str)
+static int	print_and_free(char *str)
 {
 	int	i;
 
@@ -21,21 +20,25 @@ static void print_and_free(char *str)
 	while (str[i])
 	{
 		ft_putchar_fd(str[i], 1);
-		free(str[i]);
 		i++;
 	}
+	free(str);
+	return (i);
 }
-static void	manage_letter(char const ch, va_list args)
+
+static int	manage_letter(char const ch, va_list args)
 {
 	char	*str;
 	char	c;
+	int		i;
 	
+	i = 0;
 	c = '%';
 	str = NULL;
 	if (ch == 'c')
 		c = va_arg(args, int);
 	else if (ch == 's')
-		str = va_arg(args, char *);
+		str = ft_strdup(va_arg(args, char *));
 	else if (ch == 'd' || ch == 'i')		
 		str = ft_itoa(va_arg(args, int));
 	else if (ch == 'u')
@@ -43,23 +46,29 @@ static void	manage_letter(char const ch, va_list args)
 	else if (ch == 'p')
 		str = ft_ptoa(va_arg(args, void *));
 	else if (ch == 'x')
-		str = ft_tolower(ft_itohex(va_arg(args, int)));
+	{
+		str = ft_itohex(va_arg(args, int));
+		while(str[i++])
+			ft_tolower(str[i]);
+	}
 	else if (ch == 'X')
 		str = ft_itohex(va_arg(args, int));
 	if (str == NULL)
-		ft_putchar_fd(c, 1);
+		return(ft_putchar_fd(c, 1));
 	else
-		print_and_free()
+		return(print_and_free(str));
 }
 
-void	ft_printf(char const *s, ...)
+int	ft_printf(char const *s, ...)
 {
-	int	i;
-	int	x;
+	int		i;
+	int		x;
+	int		letters;
 	va_list args;
-
+	
 	i = 0;
 	x = 0;
+	letters = 0;
 	va_start(args, s);
 	while(s[i])
 	{
@@ -68,26 +77,15 @@ void	ft_printf(char const *s, ...)
 			|| s[i + 1] == 'u' || s[i + 1] == 'x' || s[i + 1] == 'X'
 			|| s[i + 1] == '%'))
 		{
-			manage_letter(s[i + 1],args);
+			letters += manage_letter(s[i + 1],args);
 			i += 2;
 		}
 		else
 		{
-			ft_putchar_fd(s[i], 1);
+			letters += ft_putchar_fd(s[i], 1);
 			i++;
 		}
 	}
 	va_end(args);
-}
-int main()
-{
-	char Char = 'Z';
-	char *String = "Hola";
-	void *Puntero = NULL;
-	int Digito = -69;
-
-	ft_printf("Char: %c\nString: %s\n", Char, String);
-	ft_printf("Puntero: %p\nDigitos: %d y %i\n", Puntero, Digito, Digito);
-	ft_printf("Unsigned: %u\nLowerHex: %x\n", Digito, Hexnum);
-	ft_printf("UpperHex: %x\nPercentile: %%", Hexnum);
+	return (letters);
 }

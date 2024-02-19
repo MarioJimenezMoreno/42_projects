@@ -1,19 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 20:23:49 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/19 17:17:55 by mariojim         ###   ########.fr       */
+/*   Created: 2024/01/22 15:03:10 by mariojim          #+#    #+#             */
+/*   Updated: 2024/02/19 15:25:53 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putchar_fd(char c, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	write(fd, &c, 1);
-	return (1);
+	char	*s3;
+	int		i;
+	int		j;
+
+	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s3)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		s3[i] = ((char *)s1)[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		s3[i + j] = ((char *)s2)[j];
+		j++;
+	}
+	s3[i + j] = '\0';
+	return (s3);
 }

@@ -6,11 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:56:11 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/01 17:42:32 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:52:57 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 static int	calc_sign(int n, char *str)
 {

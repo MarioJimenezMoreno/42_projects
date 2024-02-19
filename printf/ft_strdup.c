@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 20:23:49 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/19 17:17:55 by mariojim         ###   ########.fr       */
+/*   Created: 2024/01/16 17:27:56 by mariojim          #+#    #+#             */
+/*   Updated: 2024/02/19 16:59:18 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putchar_fd(char c, int fd)
+char	*ft_strdup(const char *s)
 {
-	write(fd, &c, 1);
-	return (1);
+	char	*copy;
+	int		i;
+
+	i = 0;
+	copy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!copy)
+		return (NULL);
+	while (s[i])
+	{
+		copy[i] = s[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }

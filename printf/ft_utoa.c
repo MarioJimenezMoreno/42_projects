@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:56:11 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/22 18:28:15 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:10:31 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	calc_sign(int n, char *str)
-{
-	if (n >= 0)
-		return (1);
-	str[0] = '-';
-	if (n == -2147483648)
-		str[1] = '2';
-	return (-1);
-}
-
-static void	place_number(int n, char *str, int *i, int sign)
+static void	place_number(unsigned int n, char *str, int i)
 {
 	if (n / 10)
-		place_number(n / 10, str, i, sign);
-	str[*i] = (sign * n % 10) + '0';
-	(*i)++;
+		place_number(n / 10, str, i);
+	str[i] = (n % 10) + '0';
+	i++;
 }
 
-static int	calc_int_len(int n)
+static int	calc_int_len(unsigned int n)
 {
 	int	len;
 
@@ -43,22 +33,18 @@ static int	calc_int_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_utoa(unsigned int n)
 {
 	char	*str;
 	int		len;
 	int		i;
-	int		sign;
 
-	i = 0 + (n < 0) + (n == -2147483648);
+	i = 0;
 	len = calc_int_len(n);
-	str = (char *)malloc(sizeof(char) * (len + (n < 0) + 1));
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	sign = calc_sign(n, str);
-	if (n == -2147483648)
-		n += 2000000000;
-	place_number(n, str, &i, sign);
-	str[i] = '\0';
+	place_number(n, str, i);
+	str[len] = '\0';
 	return (str);
 }

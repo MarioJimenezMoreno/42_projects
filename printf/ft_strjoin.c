@@ -6,11 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:03:10 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/19 15:25:53 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:29:44 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

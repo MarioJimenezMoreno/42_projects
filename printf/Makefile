@@ -6,7 +6,7 @@
 #    By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 16:47:50 by mariojim          #+#    #+#              #
-#    Updated: 2024/02/19 16:59:29 by mariojim         ###   ########.fr        #
+#    Updated: 2024/02/25 19:18:24 by mariojim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 #
@@ -16,9 +16,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
-LIB = libftprintf.h
+LIB = ft_printf.h
 
-FTS = ft_strdup.c ft_itoa.c ft_ltohex.c ft_strjoin.c ft_itohex.c ft_printf.c ft_ptoa.c ft_putchar_fd.c ft_strlcpy.c ft_strlen.c ft_tolower.c
+FTS = ft_utoa.c ft_strdup.c ft_itoa.c ft_ltohex.c ft_strjoin.c ft_itohex.c ft_printf.c ft_ptoa.c ft_putchar_fd.c ft_strlcpy.c ft_strlen.c ft_stolower.c
 
 OBJS = $(FTS:.c=.o)
 

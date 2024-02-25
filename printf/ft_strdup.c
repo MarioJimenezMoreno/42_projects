@@ -6,11 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:56 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/19 16:59:18 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:29:35 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_strdup(const char *s)
 {

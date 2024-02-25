@@ -6,18 +6,16 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 23:58:34 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/19 15:26:33 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:29:12 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char *ft_ptoa(void *ptr)
 {
 	char	*str;
-	int		i;
 
-	i = 0;
 	str = (char *)malloc(sizeof(char) * ((sizeof(void *) * 2) + 3));
 	if (!str)
 		return (NULL);

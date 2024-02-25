@@ -6,11 +6,11 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/19 17:21:49 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:11:36 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	print_and_free(char *str)
 {
@@ -30,9 +30,7 @@ static int	manage_letter(char const ch, va_list args)
 {
 	char	*str;
 	char	c;
-	int		i;
 	
-	i = 0;
 	c = '%';
 	str = NULL;
 	if (ch == 'c')
@@ -42,17 +40,15 @@ static int	manage_letter(char const ch, va_list args)
 	else if (ch == 'd' || ch == 'i')		
 		str = ft_itoa(va_arg(args, int));
 	else if (ch == 'u')
-		str = ft_itoa(va_arg(args, unsigned int));
+		str = ft_utoa(va_arg(args, unsigned int));
 	else if (ch == 'p')
 		str = ft_ptoa(va_arg(args, void *));
 	else if (ch == 'x')
-	{
-		str = ft_itohex(va_arg(args, int));
-		while(str[i++])
-			ft_tolower(str[i]);
-	}
+		str = ft_stolower(ft_itohex(va_arg(args, unsigned int)));
 	else if (ch == 'X')
 		str = ft_itohex(va_arg(args, int));
+	else if (ch != '%')
+		return (0);
 	if (str == NULL)
 		return(ft_putchar_fd(c, 1));
 	else
@@ -62,20 +58,15 @@ static int	manage_letter(char const ch, va_list args)
 int	ft_printf(char const *s, ...)
 {
 	int		i;
-	int		x;
 	int		letters;
 	va_list args;
 	
 	i = 0;
-	x = 0;
 	letters = 0;
 	va_start(args, s);
 	while(s[i])
 	{
-		if(s[i] == '%' && (s[i + 1] == 'c' || s[i + 1] == 's' 
-			|| s[i + 1] == 'p' || s[i + 1] == 'd' || s[i + 1] == 'i'
-			|| s[i + 1] == 'u' || s[i + 1] == 'x' || s[i + 1] == 'X'
-			|| s[i + 1] == '%'))
+		if(s[i] == '%')
 		{
 			letters += manage_letter(s[i + 1],args);
 			i += 2;
@@ -88,4 +79,10 @@ int	ft_printf(char const *s, ...)
 	}
 	va_end(args);
 	return (letters);
+}
+int main()
+{
+	char *s = "hola";
+	printf("%s  %d %u %p %x %X %%\n",s,-10,-10,s,-10,-10);
+	ft_printf("%s  %d %u %p %x %X %%",s,-10,-10,s,-10,-10);
 }

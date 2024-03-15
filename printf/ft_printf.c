@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:01 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/25 20:11:36 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:05:56 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ int	ft_printf(char const *s, ...)
 	va_end(args);
 	return (letters);
 }
-int main()
+/*int main()
 {
 	char *s = "hola";
 	printf("%s  %d %u %p %x %X %%\n",s,-10,-10,s,-10,-10);
 	ft_printf("%s  %d %u %p %x %X %%",s,-10,-10,s,-10,-10);
-}
+}*/

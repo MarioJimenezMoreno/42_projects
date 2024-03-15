@@ -6,41 +6,68 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:02:50 by mariojim          #+#    #+#             */
-/*   Updated: 2024/03/14 21:55:02 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:38:36 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
 
-char	*get_next_line(int fd)
+static int read_buffer(int fd, char **stash)
 {
-	char		*buf;
-	int			i;
-	static char	*stash;	
-	char		*line;	
+	char	*buf;
+	int		seen;
 
-	i = 0;
-	buf = (char *)malloc(sizeof(char) * 11);
-	if (!stash)
-		stash = ft_strdup("");
-	while (ft_strchr(stash, '\n') == NULL)
+	seen = 1;
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (0);
+	while (seen > 0)
 	{
-		if (read(fd, buf, 10) == -1)
+		seen = read(fd, buf, BUFFER_SIZE);
+		if (seen == -1)
+		{
+			free(*stash);
+			return (0);
+		}
+		else if (seen == 0)
 		{
 			free(buf);
-			return (NULL);
+			break ;
 		}
-		stash = ft_strjoin(stash, buf);
+		*stash = ft_strjoin(*stash, buf);
+		printf("Stash:%s\n", *stash);
+		if (!(*stash))
+			return (0);
+		if (ft_strchr(*stash, '\n'))
+			break ;
 	}
-	while (stash[i] != '\n')
+	return (1);
+}
+
+char	*get_next_line(int fd)
+{
+	int			i;
+	static char	*stash;
+	char		*line;
+
+	i = 0;
+	if(fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
+	if (!stash)
+		stash = ft_strdup("");
+	if (!read_buffer(fd, &stash))
+		return (NULL);
+	while (stash[i] != '\n' && stash[i] != '\0')
 		i++;
-	line = ft_substr(stash, 0, i);
-	stash = ft_substr(stash, i + 1, 10);
-	line[i + 1] = '\0';
+	line = ft_substr(stash, 0, i + 1);
+	if (!line)
+		return (NULL);
+	stash = ft_substr(stash, i + 1, ft_strlen(stash) - i);
 	return (line);
 }
-/*int main()
+/*
+int main()
 {
 	int fd;
 	

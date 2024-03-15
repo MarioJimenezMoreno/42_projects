@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:07:10 by mariojim          #+#    #+#             */
-/*   Updated: 2024/03/14 20:32:23 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:20:04 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifndef BUFFER_SIZE
+#	define BUFFER_SIZE 42
+# endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);

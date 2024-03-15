@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 18:42:53 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/19 14:56:36 by mariojim         ###   ########.fr       */
+/*   Created: 2024/02/22 19:07:10 by mariojim          #+#    #+#             */
+/*   Updated: 2024/03/14 20:32:23 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <unistd.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int	ft_tolower(int c)
-{
-	if (c >= 'A' && c <= 'Z')
-		c = c + 32;
-	return (c);
-}
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s);
+char	*ft_strchr(const char *s, int c);

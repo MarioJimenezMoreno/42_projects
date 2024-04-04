@@ -1,16 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_printf_libft_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 15:03:10 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/22 18:29:44 by mariojim         ###   ########.fr       */
+/*   Created: 2024/03/24 16:52:26 by mariojim          #+#    #+#             */
+/*   Updated: 2024/04/01 12:31:50 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_putchar_fd(char c, int fd)
+{
+	if (write(fd, &c, 1) != 1)
+		return (-1);
+	return (1);
+}
+
+int	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+	{
+		if (write(fd, "(null)", 6) != 6)
+			return (-1);
+		return (6);
+	}
+	while (s[i])
+	{
+		if (write(fd, &s[i], 1) != 1)
+			return (-1);
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*copy;
+	int		i;
+
+	i = 0;
+	copy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!copy)
+		return (NULL);
+	while (s[i])
+	{
+		copy[i] = s[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

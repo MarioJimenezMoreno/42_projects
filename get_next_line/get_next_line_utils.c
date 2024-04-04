@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:07:29 by mariojim          #+#    #+#             */
-/*   Updated: 2024/03/14 20:20:41 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/04/01 16:41:07 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len, int flag)
 {
 	char	*subs;
 	size_t	i;
@@ -45,10 +45,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	subs[i] = '\0';
+	if (flag)
+		free(s);
 	return (subs);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*s3;
 	int		i;
@@ -56,7 +58,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!s3)
+	{
+		free(s1);
 		return (NULL);
+	}
 	i = 0;
 	while (s1[i])
 	{
@@ -70,6 +75,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	s3[i + j] = '\0';
+	free(s1);
 	return (s3);
 }
 

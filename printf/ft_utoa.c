@@ -6,18 +6,18 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:56:11 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/25 20:10:31 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/03/24 19:01:19 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	place_number(unsigned int n, char *str, int i)
+static void	place_number(unsigned int n, char *str, int *i)
 {
 	if (n / 10)
 		place_number(n / 10, str, i);
-	str[i] = (n % 10) + '0';
-	i++;
+	str[*i] = (n % 10) + '0';
+	(*i)++;
 }
 
 static int	calc_int_len(unsigned int n)
@@ -33,7 +33,7 @@ static int	calc_int_len(unsigned int n)
 	return (len);
 }
 
-char	*ft_utoa(unsigned int n)
+int	ft_utoa(unsigned int n)
 {
 	char	*str;
 	int		len;
@@ -43,8 +43,8 @@ char	*ft_utoa(unsigned int n)
 	len = calc_int_len(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
-		return (NULL);
-	place_number(n, str, i);
+		return (-1);
+	place_number(n, str, &i);
 	str[len] = '\0';
-	return (str);
+	return (print_and_free(str));
 }

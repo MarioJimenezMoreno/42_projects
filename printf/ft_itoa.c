@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:56:11 by mariojim          #+#    #+#             */
-/*   Updated: 2024/02/22 18:28:15 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/04/01 12:50:19 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	calc_int_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+int	ft_itoa(int n)
 {
 	char	*str;
 	int		len;
@@ -54,11 +54,11 @@ char	*ft_itoa(int n)
 	len = calc_int_len(n);
 	str = (char *)malloc(sizeof(char) * (len + (n < 0) + 1));
 	if (!str)
-		return (NULL);
+		return (-1);
 	sign = calc_sign(n, str);
 	if (n == -2147483648)
 		n += 2000000000;
 	place_number(n, str, &i, sign);
 	str[i] = '\0';
-	return (str);
+	return (print_and_free(str));
 }

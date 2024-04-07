@@ -6,7 +6,7 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:07:29 by mariojim          #+#    #+#             */
-/*   Updated: 2024/04/04 17:03:27 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:07:35 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ char	*ft_substr(char *s, unsigned int start, size_t len, int flag)
 	size_t	i;
 	size_t	slen;
 
-	slen = ft_strlen(s);
 	if (!s)
 		return (NULL);
+	slen = ft_strlen(s);
 	if (start > slen)
-		return (ft_strdup(""));
+		return (free_buf(&s, ft_strdup("")));
 	if (len > slen - start)
 		len = slen - start;
 	subs = (char *)malloc(sizeof(char) * len + 1);
 	if (!subs)
-		return (NULL);
+		return (free_buf(&s, NULL));
 	i = 0;
 	while (i < len && start + i < slen)
 	{
@@ -58,10 +58,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!s3)
-	{
-		free(s1);
-		return (NULL);
-	}
+		return (free_buf(&s1, NULL));
 	i = 0;
 	while (s1[i])
 	{
@@ -75,11 +72,10 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	s3[i + j] = '\0';
-	free(s1);
-	return (s3);
+	return (free_buf(&s1, s3));
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(char *s)
 {
 	char	*copy;
 	int		i;
@@ -87,7 +83,7 @@ char	*ft_strdup(const char *s)
 	i = 0;
 	copy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!copy)
-		return (NULL);
+		return (free_buf(&s, NULL));
 	while (s[i])
 	{
 		copy[i] = s[i];

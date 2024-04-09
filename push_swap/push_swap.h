@@ -6,9 +6,12 @@
 /*   By: mariojim <mariojim@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:27:33 by mariojim          #+#    #+#             */
-/*   Updated: 2024/04/03 16:54:30 by mariojim         ###   ########.fr       */
+/*   Updated: 2024/04/08 18:12:25 by mariojim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef struct s_stack
 {
@@ -18,6 +21,10 @@ typedef struct s_stack
 }	t_stack;
 
 void	push_swap(t_stack *st_a);
+int		ft_atoi(char *nptr);
+t_stack	*ft_lstnew(int value);
+t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	sa(t_stack *st_a);
 void	sb(t_stack *st_b);
 void	ss(t_stack *st_a, t_stack *st_b);
